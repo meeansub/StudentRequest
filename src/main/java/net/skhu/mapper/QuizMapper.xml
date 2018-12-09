@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+             "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="net.skhu.mapper.QuizMapper">
+	<select id="findAll" resultType="Quiz">
+	<bind name="start" value="(currentPage-1)*pageSize"/>
+	<bind name="end" value="pageSize"/>
+	select * from quiz
+	order by quizId desc
+	limit ${start} , ${end}
+	</select>
+	
+	<select id="selectCount" resultType="int">
+	select count(*) from quiz
+	</select>
+</mapper>

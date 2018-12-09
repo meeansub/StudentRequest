@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:url var="R" value="/" />
 <!DOCTYPE html>
 <html lang="kr">
 <head>
@@ -10,7 +11,7 @@
 <link rel="stylesheet" href="/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+<script src="${R}res/common.js"></script>
 <style type="text/css">
 input[type="checkbox"]#menu_state {
   display: none;
@@ -150,7 +151,7 @@ main header {
   top: 0;
   left: 0;
   right: 0;
-  height: 400px;
+  height: 900px;
   background: url("http://www.blueb.co.kr/SRC2/_image/01.jpg");
   background-size: cover;
   background-position: 50% 50%;
@@ -162,8 +163,8 @@ main section {
   padding: 25px;
   font-family: helvetica;
   font-weight: lighter;
-  padding: 50px;
-  margin: 150px 75px;
+  padding: 130px;
+  margin: 75px 200px;
   transition: all 0.15s ease-in-out;
 }
 main section:hover {
@@ -180,7 +181,11 @@ main section h1 {
   $( function() {
     $( "#datepicker" ).datepicker({
       changeMonth: true,
-      changeYear: true
+      changeYear: true,
+      nextText:'다음 달',
+      preText:'이전 달',
+      dateFormat: "yy-mm-dd"
+      
     });
   } );
   </script>
@@ -198,19 +203,19 @@ main section h1 {
 			</a>
 		</li>
 		<li>
-			<a href="javascript:void(0)">
+			<a href="question?classId=0&id=${loginInfo.id}&userType=${loginInfo.userType}">
 				<i class="fa fa-question-circle"></i>
 				<span>질문페이지</span>
 			</a>
 		</li>
 		<li>
-			<a href="javascript:void(0)">
+			<a href="quiz?id=${ loginInfo.id }&userType=${loginInfo.userType}">
 				<i class="fa fa-paper-plane"></i>
 				<span>퀴즈페이지</span>
 			</a>
 		</li>
 		<li>
-			<a href="javascript:void(0)">
+			<a href="classPlan?id=${ loginInfo.id }&userType=${loginInfo.userType}">
 				<i class="fa fa-pencil"></i>
 				<span>진도페이지</span>
 			</a>

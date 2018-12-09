@@ -33,7 +33,8 @@ body
 </style>
 <title>login</title>
 </head>
-
+<main>
+<section>
 <body>
 	<div id=center class="container main">
 		<H3>SKHU.DO</H3>
@@ -41,6 +42,7 @@ body
 		<hr />
 
 		<form method="post" action="page/check" >
+		<input type="hidden" name="test" value="0">
 			<div class="form-group">
 				<label>교수</label> <input type="radio" name="userType" value="1" />
 				<label>학생</label><input type="radio" name="userType" value="2" />
@@ -66,7 +68,6 @@ body
 				<span class="icon-search"></span> 비밀번호 찾기
 			</button>
 				
-			
 			<button type="button" class="btn btn-default" onclick="location.href='member/register'">
 					<i class="icon-user"></i>회원가입
 			</button>
@@ -74,7 +75,11 @@ body
 		</form>
 
 		<hr/>
-		
+		<c:if test="${ not empty error }">
+			<div class="alert alert-error"><span style="color:red">${ error }</span></div>
+		</c:if>
 	</div>
 </body>
+</section>
+</main>
 </html>
